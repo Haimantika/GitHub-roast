@@ -36,7 +36,7 @@ app.get('/api/roast/:username', async (req, res) => {
     const prompt = `Roast this GitHub profile: ${JSON.stringify(profileData)}`;
 
     const aiResponse = await completions.create({
-      model: "text-davinci-004",
+      model: "gpt-3.5-turbo-0613",
       prompt,
       max_tokens: 150,
     });
