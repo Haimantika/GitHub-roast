@@ -1,57 +1,56 @@
 require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
-const cors = require('cors');
-const { OpenAI, Completions, Chat } = require('openai');
+const OpenAI = require('openai');
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
-// You can adjust `Completions` or `Chat` depending on which fits better according to the documentation
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const completions = new Completions(openai);
-
-// Fetch GitHub Profile Data
-app.get('/api/profile/:username', async (req, res) => {
+app.get('/roast/:username', async (req, res) => {
   const { username } = req.params;
   try {
-    const response = await axios.get(`https://api.github.com/users/${username}`);
-    res.json(response.data);
-  } catch (error) {
-    console.error('Error fetching GitHub profile:', error);
-    res.status(500).json({ error: 'Error fetching GitHub profile' });
-  }
-});
+    const githubResponse = await axios.get(`https://api.github.com/users/${username}`);
+    const profileData = githubResponse.data;
 
-// Generate Roast
-app.get('/api/roast/:username', async (req, res) => {
-  const { username } = req.params;
-  try {
-    const profileResponse = await axios.get(`https://api.github.com/users/${username}`);
-    const profileData = profileResponse.data;
-    const prompt = `Roast this GitHub profile: ${JSON.stringify(profileData)}`;
+    if (!profileData) {
+      return res.status(404).json({ error: "GitHub user not found" });
+    }
 
-    const aiResponse = await completions.create({
-      model: "gpt-3.5-turbo-0613",
-      prompt,
-      max_tokens: 150,
+    const messages = [
+      { "role": "system", "content": "You are a witty assistant asked to create a light-hearted roast." },
+      { "role": "user", "content": `Tell me a roast about a GitHub user named ${profileData.name || username} who has ${profileData.public_repos} repositories and ${profileData.followers} followers.` },
+    ];
+
+    const completion = await openai.chat.completions.create({
+      messages: messages,
+      model: "gpt-3.5-turbo",
     });
 
-    res.json({ roast: aiResponse.data.choices[0].text.trim() });
+    if (completion && completion.choices && completion.choices.length > 0) {
+      const roast = completion.choices[0].message.content;
+      res.json({ roast });
+    } else {
+      console.error('No choices found in the response:', completion);
+      res.status(500).json({ error: "Failed to generate a roast from AI" });
+    }
   } catch (error) {
-    console.error('Error generating roast:', error);
-    res.status(500).json({ error: 'Error generating roast' });
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Failed to fetch data or generate roast' });
   }
 });
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+
 
 
 

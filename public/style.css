@@ -1,0 +1,20 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+input[type="text"], button {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+button {
+    cursor: pointer;
+}
+
+p {
+    margin-top: 20px;
+}
+
+  
