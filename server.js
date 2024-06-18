@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY_NEW,
 });
 
 app.get('/roast/:username', async (req, res) => {
