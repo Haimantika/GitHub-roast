@@ -64,5 +64,26 @@ input, button {
     height: 50px;
     vertical-align: middle;
 }
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.login-button {
+    background-color: #2ea44f;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.login-button:hover {
+    background-color: #2f73f1;
+}
 
   
