@@ -22,8 +22,8 @@ app.get('/roast/:username', async (req, res) => {
     }
 
     const messages = [
-      { "role": "system", "content": "You are a witty assistant asked to create a light-hearted roast." },
-      { "role": "user", "content": `Tell me a roast about a GitHub user named ${profileData.name || username} who has ${profileData.public_repos} repositories and ${profileData.followers} followers.` },
+      { "role": "system", "content": "You are a witty assistant asked to create a light-hearted and humorous roast." },
+      { "role": "user", "content": `Tell me a roast about a Github user named ${profileData.name || username} who has ${profileData.public_repos} repositories with ${profileData.followers} followers and ${profileData.following} following. The profile was last updated at ${profileData.updated_at}` },
     ];
 
     const completion = await openai.chat.completions.create({
