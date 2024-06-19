@@ -14,7 +14,7 @@ body {
     background: white;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 600px;
 }
@@ -42,13 +42,15 @@ input[type="text"] {
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
+    margin: 20px;
 }
 
 .btn:hover {
     background-color: #0056b3;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .roast-output {
@@ -60,10 +62,12 @@ input[type="text"] {
     text-align: left;
 }
 
-input, button {
+input,
+button {
     height: 50px;
     vertical-align: middle;
 }
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -85,5 +89,3 @@ input, button {
 .login-button:hover {
     background-color: #2f73f1;
 }
-
-  
