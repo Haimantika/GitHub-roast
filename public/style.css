@@ -25,7 +25,12 @@ h1 {
 }
 
 .input-group {
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
 }
 
 input[type="text"] {
@@ -35,6 +40,7 @@ input[type="text"] {
     border-radius: 4px;
     width: calc(100% - 110px);
     margin-right: 10px;
+    margin
 }
 
 .btn {
