@@ -45,8 +45,18 @@ input[type="text"] {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    margin: 10px 0px 0px 0px;
 }
 
+#roastWrapper{
+    padding: 10px;
+    color: #007bff;
+    text-align: right;
+}
+
+.createdby{
+    text-align: right;
+}
 .btn:hover {
     background-color: #0056b3;
 }
