@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GitHub Roast App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>Roast my GitHub profile!</h1>
-        <div class="input-group">
-            <input type="text" id="username" placeholder="Enter GitHub Username" aria-label="GitHub Username">
-            <button onclick="getRoast()" class="btn">Roast!</button>
-        </div>
-        <div id="roastWrapper">
-            <p id="roastOutput" class="roast-output"></p>
-            <p class="createdby">created by https://github-roast.up.railway.app</p>
-        </div>
+      <h1>Roast my GitHub profile!</h1>
+      <div class="input-group">
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter GitHub Username"
+          aria-label="GitHub Username"
+        />
+        <button onclick="getRoast()" class="btn">Roast!</button>
+      </div>
+      <div id="roastWrapper">
+        <p id="roastOutput" class="roast-output"></p>
+        <p class="createdby">created by https://github-roast.up.railway.app</p>
+      </div>
 
-        <button onclick="saveRoast()" class="btn">Save</button>
-
+      <button onclick="saveRoast()" class="btn">Save</button>
     </div>
-    <script src="app.js"></script>
-</body>
-</html>
+    <a class="contribute" href="https://github.com/Haimantika/GitHub-roast">
+      This project is open source, you can contribute
+    </a>
 
+    <script src="app.js"></script>
+  </body>
+</html>
