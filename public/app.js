@@ -8,12 +8,16 @@ async function getRoast() {
   try {
     const response = await fetch(`/roast/${username}`);
     const data = await response.json();
-    document.getElementById("roastOutput").textContent =
-      data.roast || "No roast available.";
+    const roastOutput = document.getElementById("roastOutput");
+    roastOutput.textContent = data.roast || "No roast available.";
+
+    // Show save and share buttons
+    document.getElementById("saveButton").style.display = "block";
+    document.getElementById("shareButton").style.display = "block";
   } catch (error) {
     console.error("Failed to fetch roast:", error);
-    document.getElementById("roastOutput").textContent =
-      "Failed to fetch roast. Please try again.";
+    const roastOutput = document.getElementById("roastOutput");
+    roastOutput.textContent = "Failed to fetch roast. Please try again.";
   }
 }
 
@@ -24,4 +28,17 @@ function saveRoast() {
     link.download = "roast.png";
     link.click();
   });
+}
+
+function shareOnTwitter() {
+  const roastText = document.getElementById("roastOutput").textContent;
+  const tweetText = encodeURIComponent(
+    `Check out this GitHub roast : ${roastText}
+
+    
+     "Try Yours at - github-roast.up.railway.app/"
+    `
+  );
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${tweetText}`;
+  window.open(twitterUrl, "_blank");
 }
