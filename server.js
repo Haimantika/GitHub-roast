@@ -56,7 +56,7 @@ app.get('/home', (req, res) => {
 });
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY_NEW3,
+    apiKey: process.env.OPENAI_API_KEY_NEW4,
 });
 
 // Endpoint to generate a roast
