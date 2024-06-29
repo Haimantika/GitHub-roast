@@ -4,6 +4,11 @@ async function getRoast() {
     alert("Please enter a GitHub username.");
     return;
   }
+  const roastButton = document.getElementById("roastBtn");
+  roastButton.disabled = true;
+
+  document.getElementById("roastOutput").textContent =
+    "Your roast is being prepared...";
 
   try {
     const response = await fetch(`/roast/${username}`);
@@ -15,6 +20,7 @@ async function getRoast() {
     document.getElementById("roastOutput").textContent =
       "Failed to fetch roast. Please try again.";
   }
+  roastButton.disabled = false;
 }
 
 function saveRoast() {

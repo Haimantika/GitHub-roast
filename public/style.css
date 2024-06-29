@@ -1,79 +1,100 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8;
+    background: linear-gradient(135deg, #f0f4f8, #d5dbdf);
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #333;
 }
 
 .container {
     text-align: center;
     background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 2.3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 600px;
 }
 
 h1 {
-    color: #333;
+    color: #007bff;
     margin-bottom: 2rem;
+    font-size: 2rem;
 }
 
 .input-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input[type="text"] {
-    padding: 10px;
-    font-size: 16px;
+    padding: 1px 12px;
+    font-size: 1rem;
     border: 2px solid #ccc;
-    border-radius: 4px;
-    width: calc(100% - 110px);
+    border-radius: 8px;
+    width: calc(100% - 130px);
     margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 .btn {
-    padding: 10px 20px;
-    background-color: #007bff;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    margin: 10px 0px 0px 0px;
+    font-size: 1rem;
+    transition: background 0.3s;
 }
 
-#roastWrapper{
-    padding: 10px;
-    color: #007bff;
-    text-align: right;
-}
-
-.createdby{
-    text-align: right;
-}
 .btn:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+#roastWrapper {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+}
+
+.createdby {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #666;
 }
 
 .roast-output {
     margin-top: 20px;
     padding: 10px;
-    background-color: #f8f9fa;
-    border-left: 3px solid #007bff;
+    background-color: #ffffff;
+    border-left: 4px solid #007bff;
     color: #333;
     text-align: left;
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-input, button {
-    height: 50px;
+input,
+button {
+    height:55px;
     vertical-align: middle;
 }
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -89,11 +110,10 @@ input, button {
     padding: 10px 15px;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
 }
 
 .login-button:hover {
     background-color: #2f73f1;
 }
-
-  
