@@ -44,7 +44,7 @@ app.get('/auth/github', passport.authenticate('github'));
 // GitHub callback route
 app.get('/auth/github/callback', 
     passport.authenticate('github', { failureRedirect: '/' }),
-    (req, res) => res.redirect('/home'));
+    (req, res) => res.redirect(`/home?github=${req.user.username}`));
 
 // Protected route to serve the homepage after login
 app.get('/home', (req, res) => {
