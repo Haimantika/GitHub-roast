@@ -25,3 +25,12 @@ function saveRoast() {
     link.click();
   });
 }
+
+function checkGitHubUsername() {
+  var params = new URLSearchParams(window.location.search);
+  var username = params.get('github');
+  if (username !== "") {
+      document.getElementById('username').value = username;
+      getRoast();
+  }
+} checkGitHubUsername();
