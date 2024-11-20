@@ -1,11 +1,8 @@
 let username = ''
 document.addEventListener('DOMContentLoaded', () => {
-  fetch(window.location.href)
-    .then(response => {
-      username = response.headers.get('GITHUB_USERNAME');
-      console.log("Roasting: ", username)
-      document.getElementById('username').value = username;
-    });
+  var params = new URLSearchParams(window.location.search);
+  username = params.get("username");
+  document.getElementById("username").value = username;
 });
 
 async function getRoast() {

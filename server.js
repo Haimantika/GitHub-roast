@@ -52,12 +52,7 @@ app.get('/auth/github/callback',
 // Protected route to serve the homepage after login
 app.get('/home', (req, res) => {
     if (req.isAuthenticated()) {
-        const {username} = req.query;
-        res.sendFile(path.join(__dirname, 'public', 'home.html'), {
-            headers: {
-                'GITHUB_USERNAME': username
-            }
-        });
+        res.sendFile(path.join(__dirname, 'public', 'home.html'));
     } else {
         res.redirect('/');
     }
