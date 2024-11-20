@@ -44,12 +44,20 @@ app.get('/auth/github', passport.authenticate('github'));
 // GitHub callback route
 app.get('/auth/github/callback', 
     passport.authenticate('github', { failureRedirect: '/' }),
-    (req, res) => res.redirect('/home'));
+    (req, res) => {
+        const username =  req.user.username;
+        res.redirect(`/home?username=${username}`)
+    });
 
 // Protected route to serve the homepage after login
 app.get('/home', (req, res) => {
     if (req.isAuthenticated()) {
-        res.sendFile(path.join(__dirname, 'public', 'home.html'));
+        const {username} = req.query;
+        res.sendFile(path.join(__dirname, 'public', 'home.html'), {
+            headers: {
+                'GITHUB_USERNAME': username
+            }
+        });
     } else {
         res.redirect('/');
     }
@@ -92,12 +100,3 @@ app.get('/roast/:username', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
-
-
-
-
-
-
-
-
-

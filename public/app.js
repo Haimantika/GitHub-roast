@@ -1,7 +1,17 @@
+let username = ''
+document.addEventListener('DOMContentLoaded', () => {
+  fetch(window.location.href)
+    .then(response => {
+      username = response.headers.get('GITHUB_USERNAME');
+      console.log("Roasting: ", username)
+      document.getElementById('username').value = username;
+    });
+});
+
 async function getRoast() {
-  const username = document.getElementById("username").value;
+
   if (!username) {
-    alert("Please enter a GitHub username.");
+    alert("Something seems wrong, try re-logging or entering username again.");
     return;
   }
 
